@@ -38,7 +38,7 @@ const makeDeltaTracker = function(value){
   }
 }
 
-const makeFiboGenerator = undefined;
+const makeFiboGenerator =undefined //function(from,to){
 
 const makeCycler = function(array){
   let index = 0;
@@ -63,9 +63,14 @@ const curry = function(func,arguement1){
   }
 }
 
-
-const compose = undefined;
-
+const compose =function(func1,func2){
+  return function(parameter1,parameter2){
+    if(!parameter2){
+      return func1(func2(parameter1));
+    }
+    return func2(func1(parameter1),func1(parameter2));
+  }
+}
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
 exports.makeCounterFromN=makeCounterFromN;
