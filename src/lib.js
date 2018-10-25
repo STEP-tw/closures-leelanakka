@@ -11,19 +11,16 @@ const makeCounterFromN = function(counter){
 }
 
 const makeCounterFromZero = function(){
-  let counter = 0
-  return function(){
-    return counter++;
-  }
+  return makeCounterFromN(0);
 }
 
 const makeDeltaTracker = function(value){
   return function(deltaValue){
- if(!deltaValue){
-  deltaValue = 0;
- }
+    if(!deltaValue){
+      deltaValue = 0;
+    }
     return {old:value,delta:deltaValue, new:value=(value+deltaValue)}; 
-}
+  }
 }
 
 const makeFiboGenerator = function(firstNumber,secondNumber){
