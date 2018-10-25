@@ -44,17 +44,10 @@ const makeFiboGenerator = function(firstNumber,secondNumber){
 
 const makeCycler = function(array){
   let index = 0;
+  let newArray = array.slice();
   return function(){
-    result = array[index];
-    if(array.length>1){
-      index++;
-    }
-    if(result=="yellow"){
-      result = "black";
-    }
-    if(index>=array.length){
-      index = 0;
-    }
+    result = newArray[index%newArray.length];
+    index++;
     return result;
   }
 }
