@@ -15,6 +15,7 @@ const testComposeTwoFunctionsThatTakesOneArg = function() {
   assert.equal(1,lastPosition([1,2]));
   assert.equal(2,lastPosition([1,2,3]));
   assert.equal(4,lastPosition("abcde"));
+  assert.equal(4,lastPosition("leela"));
 };
 
 const testComposeTwoFunctionsThatTakesTwoArgs = function() {

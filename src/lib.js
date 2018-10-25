@@ -38,7 +38,24 @@ const makeDeltaTracker = function(value){
   }
 }
 
-const makeFiboGenerator =undefined //function(from,to){
+const makeFiboGenerator = function(firstNumber,secondNumber){
+  let fibonacciSeries = [0,1]
+  if(firstNumber && !secondNumber){
+    fibonacciSeries[1] = firstNumber;
+  }
+  if(firstNumber && secondNumber){
+    fibonacciSeries[0] = firstNumber;
+    fibonacciSeries[1] = secondNumber;
+  }
+  let counter = 0;
+  return function(){
+    if(counter == 0 || counter == 1){
+      return fibonacciSeries[counter++];
+    }
+    fibonacciSeries[counter] = fibonacciSeries[counter-1]+fibonacciSeries[counter-2];
+    return fibonacciSeries[counter++];
+  }
+}
 
 const makeCycler = function(array){
   let index = 0;
@@ -64,11 +81,11 @@ const curry = function(func,arguement1){
 }
 
 const compose =function(func1,func2){
-  return function(parameter1,parameter2){
-    if(!parameter2){
-      return func1(func2(parameter1));
+  return function(arguement1,arguement2){
+    if(!arguement2){
+      return func1(func2(arguement1));
     }
-    return func2(func1(parameter1),func1(parameter2));
+    return func2(func1(arguement1),func1(arguement2));
   }
 }
 exports.makeConstant=makeConstant;
