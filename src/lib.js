@@ -18,24 +18,12 @@ const makeCounterFromZero = function(){
 }
 
 const makeDeltaTracker = function(value){
-  let trackDelta = {old:value, delta: 0, new: 1};
-  let count = 0;
-  return function(delta){
-    if(count>0){
-      trackDelta.old++;
-    }
-    count ++;
-    if(delta<-1){
-      trackDelta.old-=2;
-    }
-    if(delta>0 || delta<0){
-      trackDelta.delta = delta;
-      trackDelta.new = trackDelta.old+trackDelta.delta;
-    } else{
-      trackDelta.new = trackDelta.old+trackDelta.delta;
-    }
-    return trackDelta;
-  }
+  return function(deltaValue){
+ if(!deltaValue){
+  deltaValue = 0;
+ }
+    return {old:value,delta:deltaValue, new:value=(value+deltaValue)}; 
+}
 }
 
 const makeFiboGenerator = function(firstNumber,secondNumber){
