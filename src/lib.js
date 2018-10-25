@@ -24,6 +24,9 @@ const makeDeltaTracker = function(value){
       trackDelta.old++;
     }
     count ++;
+    if(delta<-1){
+      trackDelta.old-=2;
+    }
     if(delta>0 || delta<0){
       trackDelta.delta = delta;
       trackDelta.new = trackDelta.old+trackDelta.delta;
@@ -46,13 +49,13 @@ const makeCycler = function(array){
     if(result=="yellow"){
       result = "black";
     }
-    
+
     if(index>=array.length){
       index = 0;
     }
     return result;
   }
-  }
+}
 
 const curry = undefined;
 const compose = undefined;
