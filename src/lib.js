@@ -3,7 +3,13 @@ const makeConstant = function(input){
   return input;
   }
 };
-const makeCounterFromN = undefined;
+
+const makeCounterFromN = function(counter){
+  return function(){
+    return counter++; 
+  }
+}
+
 const makeCounterFromZero = undefined;
 const makeDeltaTracker = undefined;
 const makeFiboGenerator = undefined;
