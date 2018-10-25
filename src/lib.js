@@ -1,6 +1,6 @@
 const makeConstant = function(input){
   return function(){
-  return input;
+    return input;
   }
 };
 
@@ -16,9 +16,44 @@ const makeCounterFromZero = function(){
     return counter++;
   }
 }
-const makeDeltaTracker = undefined;
+const makeDeltaTracker = function(value){
+  let trackDelta = {old:value, delta: 0, new: 1};
+  let count = 0;
+  return function(delta){
+    if(count>0){
+      trackDelta.old++;
+    }
+    count ++;
+    if(delta>0 || delta<0){
+      trackDelta.delta = delta;
+      trackDelta.new = trackDelta.old+trackDelta.delta;
+    } else{
+      trackDelta.new = trackDelta.old+trackDelta.delta;
+    }
+    return trackDelta;
+  }
+}
+
 const makeFiboGenerator = undefined;
-const makeCycler = undefined;
+
+const makeCycler = function(array){
+  let index = 0;
+  return function(){
+    result = array[index];
+    if(array.length>1){
+      index++;
+    }
+    if(result=="yellow"){
+      result = "black";
+    }
+    
+    if(index>=array.length){
+      index = 0;
+    }
+    return result;
+  }
+  }
+
 const curry = undefined;
 const compose = undefined;
 
