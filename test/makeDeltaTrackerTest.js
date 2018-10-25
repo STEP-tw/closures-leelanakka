@@ -16,6 +16,8 @@ const testTrackerWithNegativeDeltaValue = function() {
   let trackDelta = makeDeltaTracker(1);
   assert.deepEqual({old: 1, delta: -1, new: 0}, trackDelta(-1));
   assert.deepEqual({old: 0, delta: -2, new: -2}, trackDelta(-2));
+  assert.deepEqual({old: -1, delta: -3, new: -4}, trackDelta(-3));
+  assert.deepEqual({old: -2, delta: -4, new: -6}, trackDelta(-4));
 };
 
 const runTests = function() {

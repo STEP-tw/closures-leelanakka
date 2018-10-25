@@ -16,6 +16,7 @@ const makeCounterFromZero = function(){
     return counter++;
   }
 }
+
 const makeDeltaTracker = function(value){
   let trackDelta = {old:value, delta: 0, new: 1};
   let count = 0;
@@ -49,7 +50,6 @@ const makeCycler = function(array){
     if(result=="yellow"){
       result = "black";
     }
-
     if(index>=array.length){
       index = 0;
     }
@@ -57,7 +57,13 @@ const makeCycler = function(array){
   }
 }
 
-const curry = undefined;
+const curry = function(func,arguement1){
+  return function(arguement2,another){
+    return func(arguement1,arguement2,another)
+  }
+}
+
+
 const compose = undefined;
 
 exports.makeConstant=makeConstant;
