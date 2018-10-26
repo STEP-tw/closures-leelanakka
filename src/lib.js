@@ -42,9 +42,13 @@ const makeFiboGenerator = function(firstNumber,secondNumber){
   }
 }
 
+const returnSameArgument = function(argument){
+  return argument;
+}
+
 const makeCycler = function(array){
   let index = 0;
-  let newArray = array.slice();
+  let newArray = array.map(returnSameArgument);
   return function(){
     result = newArray[index%newArray.length];
     index++;
@@ -53,8 +57,8 @@ const makeCycler = function(array){
 }
 
 const curry = function(func,arguement1){
-  return function(arguement2,another){
-    return func(arguement1,arguement2,another)
+  return function(arguement2,arguement3){
+    return func(arguement1,arguement2,arguement3)
   }
 }
 
@@ -66,6 +70,7 @@ const compose =function(func1,func2){
     return func2(func1(arguement1),func1(arguement2));
   }
 }
+
 exports.makeConstant=makeConstant;
 exports.makeCounterFromZero=makeCounterFromZero;
 exports.makeCounterFromN=makeCounterFromN;
