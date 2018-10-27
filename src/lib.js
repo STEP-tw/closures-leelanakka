@@ -2,7 +2,7 @@ const makeConstant = function(input){
   return function(){
     return input;
   }
-};
+}
 
 const makeCounterFromN = function(counter){
   return function(){
@@ -14,17 +14,17 @@ const makeCounterFromZero = function(){
   return makeCounterFromN(0);
 }
 
-const makeDeltaTracker = function(value){
+const makeDeltaTracker = function(oldValue){
   return function(deltaValue){
     if(!deltaValue){
       deltaValue = 0;
     }
-    return {old:value,delta:deltaValue, new:value=(value+deltaValue)}; 
+    return {old:oldValue,delta:deltaValue, new:oldValue=(oldValue+deltaValue)}; 
   }
 }
 
 const makeFiboGenerator = function(firstNumber,secondNumber){
-  let fibonacciSeries = [0,1]
+  let fibonacciSeries = [0,1];
   if(firstNumber && !secondNumber){
     fibonacciSeries[1] = firstNumber;
   }
@@ -58,16 +58,13 @@ const makeCycler = function(array){
 
 const curry = function(func,arguement1){
   return function(arguement2,arguement3){
-    return func(arguement1,arguement2,arguement3)
+    return func(arguement1,arguement2,arguement3);
   }
 }
 
-const compose =function(func1,func2){
+const compose =function(outerFunction,innerFunction){
   return function(arguement1,arguement2){
-    if(!arguement2){
-      return func1(func2(arguement1));
-    }
-    return func2(func1(arguement1),func1(arguement2));
+    return outerFunction(innerFunction(arguement1,arguement2));
   }
 }
 
